@@ -35,3 +35,21 @@ export const getMovies = () => {
     }
     ).then(res => res.json());
   };
+
+  export const getTopratedMovies = () => {
+    return fetch(
+       '/api/toprated',{headers: {
+         'Authorization': window.localStorage.getItem('token')
+      }
+    }
+    ).then(res => res.json());
+  };
+
+  export const getUpcomingMovies = () => {
+    return fetch(
+       '/api/upcoming',{headers: {
+         'Authorization': window.localStorage.getItem('token')
+      }
+    }
+    ).then(res => res.json());
+  };
