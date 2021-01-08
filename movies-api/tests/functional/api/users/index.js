@@ -64,18 +64,21 @@ describe("Users endpoint", () => {
         });
     });
   });
-
   describe("POST / ", () => {
     it("should return a 200 status and the confirmation message", () => {
       return request(api)
-        .post("/api/users")
+        .post("/api/users?action=register")
         .send({
           username: "user3",
           password: "test3",
         })
-        .expect(200)
-        .expect({ success: true, token: "FakeTokenForNow" });
+        .expect(201)
+        // .end((err,res) =>{
+        //   expect (res.body.msg).to.equal('Created');
+        // });
+        // .expect({ success: true, token: "FakeTokenForNow" });
     });
+
     after(() => {
       return request(api)
         .get("/api/users")
